@@ -27,3 +27,28 @@ class Solution:
         return self.res
 ```
 102. Binary tree level order traversal
+
+
+
+```python
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res=[]
+        if not root:
+            return res
+        res.append([])
+        def helper(n:TreeNode,res:List[List[int]],level:int):
+            if not n:
+                return
+            if level>len(res)-1:
+                lvl=[n.val]
+                res.append(lvl)
+            else:
+                res[level].append(n.val)
+            helper(n.left,res,level+1)
+            helper(n.right,res,level+1)
+        helper(root,res,0)
+        return res
+               
+            
+```
